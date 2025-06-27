@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FurniTrend - Modern Furniture</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F5F1E9;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #4A3728;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+            position: relative;
+            z-index: 100;
+        }
+        .logo {
+            max-width: 120px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            margin: 0;
+            font-family: 'Lora', serif;
+            font-size: 36px;
+            font-weight: 700;
+        }
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            background: #4A3728;
+            padding: 10px 0;
+            margin-top: 10px;
+        }
+        .sticky-nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .sticky-nav a:hover {
+            color: #C0A062;
+        }
+        #hero {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        .carousel {
+            display: flex;
+            width: 300%;
+            animation: slide 12s infinite;
+        }
+        .carousel-item {
+            flex: 1 0 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            33% { transform: translateX(-100%); }
+            66% { transform: translateX(-200%); }
+            100% { transform: translateX(0); }
+        }
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+        }
+        .hero-text h2 {
+            font-family: 'Lora', serif;
+            font-size: 32px;
+            margin: 0;
+        }
+        #products {
+            padding: 50px 20px;
+            background: #FFF;
+        }
+        #products h2 {
+            font-family: 'Lora', serif;
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #4A3728;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .product {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .product p {
+            font-size: 16px;
+            margin: 15px 0;
+            color: #4A3728;
+            text-align: center;
+        }
+        #contact, #videos {
+            padding: 50px 20px;
+            background: #F5F1E9;
+        }
+        #contact h2, #videos h2 {
+            font-family: 'Lora', serif;
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #4A3728;
+        }
+        .social-link {
+            color: #C0A062;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .social-link i {
+            margin-right: 5px;
+        }
+        .social-link:hover {
+            color: #8B5E3C;
+        }
+        #contactForm {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #contactForm input, #contactForm textarea {
+            margin-bottom: 15px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            font-family: 'Roboto', sans-serif;
+        }
+        #contactForm button {
+            background-color: #C0A062;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        #contactForm button:hover {
+            background-color: #8B5E3C;
+        }
+        .message-item {
+            background: #fff;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #4A3728;
+            color: white;
+            font-size: 14px;
+        }
+        footer a {
+            color: #C0A062;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        iframe {
+            max-width: 100%;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img id="logo" src="https://via.placeholder.com/120x60?text=FurniTrend+Logo" alt="FurniTrend Logo" class="logo">
+        <h1>FurniTrend</h1>
+        <nav class="sticky-nav">
+            <a href="#hero">Home</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
+            <a href="#videos">Videos</a>
+            <a href="admin.html">Admin</a>
+        </nav>
+    </header>
+    <section id="hero">
+        <div class="carousel">
+            <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg" alt="Furniture 1" class="carousel-item">
+            <img src="https://images.pexels.com/photos/276624/pexels-photo-276624.jpeg" alt="Furniture 2" class="carousel-item">
+            <img src="https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg" alt="Furniture 3" class="carousel-item">
+        </div>
+        <div class="hero-text">
+            <h2>Discover Timeless Elegance</h2>
+        </div>
+    </section>
+    <section id="products">
+        <h2>Our Furniture Collection</h2>
+        <div class="product-grid" id="productGrid">
+            <!-- Products loaded dynamically -->
+        </div>
+    </section>
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>
+            <a href="mailto:jazminepel83@gmail.com" class="social-link"><i class="fas fa-envelope"></i> Email</a> |
+            <a href="YOUR_INSTAGRAM_URL" class="social-link"><i class="fab fa-instagram"></i> Instagram</a> |
+            <a href="YOUR_TWITTER_URL" class="social-link"><i class="fab fa-twitter"></i> Twitter</a> |
+            <a href="https://wa.me/YOUR_PHONE_NUMBER" class="social-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </p>
+        <h3>Drop a Message</h3>
+        <form id="contactForm">
+            <input type="text" id="userName" placeholder="Your Name" required>
+            <textarea id="userMessage" placeholder="Your Message" rows="4" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <h3>Received Messages</h3>
+        <div id="messageList"></div>
+    </section>
+    <section id="videos">
+        <h2>Watch Our Furniture in Action</h2>
+        <div id="videoGrid"></div>
+    </section>
+    <footer>
+        <p>© 2025 FurniTrend. All rights reserved. | 
+            <a href="#contact">Contact</a> | 
+            <a href="#products">Shop Now</a>
+        </p>
+    </footer>
+    <script>
+        // Load content, videos, and messages with polling
+        window.onload = function() {
+            // Load logo
+            let logoUrl = localStorage.getItem('logoUrl') || 'https://via.placeholder.com/120x60?text=FurniTrend+Logo';
+            if (document.getElementById('logo')) {
+                document.getElementById('logo').src = logoUrl;
+            }
+            // Load products
+            let products = JSON.parse(localStorage.getItem('products') || '[]');
+            let productGrid = document.getElementById('productGrid');
+            if (productGrid) {
+                productGrid.innerHTML = '';
+                products.forEach(product => {
+                    let div = document.createElement('div');
+                    div.className = 'product';
+                    div.dataset.id = product.id;
+                    div.innerHTML = `<img src="${product.image}" alt="${product.name}"><p id="product${product.id}">${product.description}</p>`;
+                    productGrid.appendChild(div);
+                });
+            }
+            // Load videos
+            let videos = JSON.parse(localStorage.getItem('videos') || '[]');
+            let videoGrid = document.getElementById('videoGrid');
+            if (videoGrid) {
+                videoGrid.innerHTML = '';
+                videos.forEach(url => {
+                    let iframe = document.createElement('iframe');
+                    iframe.src = url;
+                    iframe.width = '100%';
+                    iframe.height = '200';
+                    iframe.frameBorder = '0';
+                    iframe.allowFullscreen = true;
+                    videoGrid.appendChild(iframe);
+                });
+            }
+            // Load contact form
+            let contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    let name = document.getElementById('userName').value;
+                    let message = document.getElementById('userMessage').value;
+                    let messages = JSON.parse(localStorage.getItem('messages') || '[]');
+                    messages.push({ id: Date.now(), name, message });
+                    localStorage.setItem('messages', JSON.stringify(messages));
+                    alert('Message sent! Refresh or wait for update.');
+                    contactForm.reset();
+                    loadMessages(); // Update immediately
+                });
+            }
+            // Load and poll messages
+            function loadMessages() {
+                let messageList = document.getElementById('messageList');
+                if (messageList) {
+                    let messages = JSON.parse(localStorage.getItem('messages') || '[]');
+                    messageList.innerHTML = '';
+                    messages.forEach(message => {
+                        let div = document.createElement('div');
+                        div.className = 'message-item';
+                        div.innerHTML = `<p><strong>${message.name}</strong>: ${message.message}</p>`;
+                        messageList.appendChild(div);
+                    });
+                }
+            }
+            loadMessages(); // Initial load
+            setInterval(loadMessages, 5000); // Poll every 5 seconds
+        };
+    </script>
+</body>
+</html>
